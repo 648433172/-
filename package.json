@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "scripts": {
+    "test": "node tests/minesweeper.test.js",
+    "start": "node server.js"
+  },
+  "devDependencies": {}
+}
