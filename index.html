@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>扫雷</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="game-stage" aria-label="扫雷游戏">
+        <header class="topbar">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <h1>扫雷</h1>
+          </div>
+          <div class="meters" aria-label="游戏状态">
+            <div class="meter">
+              <span>雷数</span>
+              <strong id="mineCount">010</strong>
+            </div>
+            <button id="restartBtn" class="face-button" type="button" aria-label="新游戏">🙂</button>
+            <div class="meter">
+              <span>时间</span>
+              <strong id="timer">000</strong>
+            </div>
+          </div>
+        </header>
+
+        <section class="play-area">
+          <div class="board-wrap">
+            <div id="board" class="board" aria-label="扫雷棋盘"></div>
+          </div>
+
+          <aside class="side-panel" aria-label="游戏控制">
+            <div class="panel-section">
+              <h2>难度</h2>
+              <div class="segmented" role="group" aria-label="选择难度">
+                <button type="button" data-difficulty="easy" class="active">简单</button>
+                <button type="button" data-difficulty="medium">中度</button>
+                <button type="button" data-difficulty="hard">困难</button>
+              </div>
+            </div>
+
+            <div class="panel-section controls-row">
+              <button id="newGameBtn" class="primary-btn" type="button">新游戏</button>
+              <label class="switch">
+                <input id="flagMode" type="checkbox" />
+                <span></span>
+                旗帜模式
+              </label>
+            </div>
+
+            <div class="panel-section status-card">
+              <div>
+                <span>状态</span>
+                <strong id="statusText">找出所有地雷</strong>
+              </div>
+              <div>
+                <span>最佳</span>
+                <strong id="bestTime">--</strong>
+              </div>
+            </div>
+
+            <div class="panel-section records-card">
+              <h2>最快记录</h2>
+              <div class="record-row">
+                <span>简单</span>
+                <strong data-record="easy">--</strong>
+              </div>
+              <div class="record-row">
+                <span>中度</span>
+                <strong data-record="medium">--</strong>
+              </div>
+              <div class="record-row">
+                <span>困难</span>
+                <strong data-record="hard">--</strong>
+              </div>
+            </div>
+
+            <div class="panel-section actions">
+              <button id="hintBtn" type="button">提示安全格</button>
+              <button id="rulesBtn" type="button">规则</button>
+            </div>
+          </aside>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="rulesDialog" class="rules-dialog">
+      <form method="dialog">
+        <header>
+          <h2>规则</h2>
+          <button type="submit" aria-label="关闭">×</button>
+        </header>
+        <p>点击格子进行排雷，数字表示周围八格内地雷数量。右键或开启旗帜模式可标记疑似地雷。</p>
+        <p>第一次点击不会踩雷。揭开所有非雷格，或正确标记全部地雷，即可获胜。</p>
+      </form>
+    </dialog>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
